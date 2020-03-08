@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .red {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="module">
+    import React, { Component } from './react/index.js'
+    import ReactDOM from './react-dom/index.js'
+
+    class Hello extends Component {
+      constructor (props) {
+        super(props)
+        this.state = {
+          count: 1
+        }
+      }
+      componentWillMount () {
+        console.log('component will mount')
+      }
+      componentDidMount () {
+        console.log('component did mount')
+      }
+      componentWillUpdate () {
+        console.log('component will update')
+      }
+      componentDidUpdate () {
+        console.log('component did update')
+      }
+      addCount = () => {
+        console.log('clicked', this.state.count)
+        let count = this.state.count
+        this.setState({
+          count: count + 1
+        })
+      }
+      render () {
+        return (
+          React.createElement('div', { className: 'red', onClick: this.addCount }, 'counter ??:', this.state.count)
+        )
+      }
+    }
+    const helloElement = React.createElement(Hello, null, null)
+
+    ReactDOM.render(React.createElement('div', {},  helloElement), document.getElementById('root'))
+  </script>
+</body>
+
+</html>
