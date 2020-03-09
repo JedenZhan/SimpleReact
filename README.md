@@ -3,7 +3,7 @@
 - 虚拟DOM的渲染
 - 自定义组件的渲染
 - diff 算法
-- setState 队列
+- setState 队列 (updating)
 
 [本文参考](https://juejin.im/post/5ad81c24f265da504c168c85)
 
@@ -19,7 +19,6 @@ cd SimpleReact
 
 ```bash
 cnpm i live-server -g
-
 ```
 
 [博客地址](https://jedenzhan.github.io/)

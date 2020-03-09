@@ -10,6 +10,10 @@
     .red {
       color: red;
     }
+
+    .blue {
+      color: blue;
+    }
   </style>
 </head>
 
@@ -24,7 +28,7 @@
       constructor (props) {
         super(props)
         this.state = {
-          count: 1
+          count: this.props.a
         }
       }
       componentWillMount () {
@@ -48,11 +52,11 @@
       }
       render () {
         return (
-          React.createElement('div', { className: 'red', onClick: this.addCount }, 'counter ??:', this.state.count)
+          React.createElement('div', {onClick: this.addCount, a: this.state.a }, 'counter ??:', this.state.count)
         )
       }
     }
-    const helloElement = React.createElement(Hello, null, null)
+    const helloElement = React.createElement(Hello, { className: 'blue',a: 10 }, null)
 
     ReactDOM.render(React.createElement('div', {},  helloElement), document.getElementById('root'))
   </script>

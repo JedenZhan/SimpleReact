@@ -7,29 +7,11 @@ import {
   createComponent
 } from './render.js'
 
-const removeNode = node => {
-  if (node && node.parentNode) {
-    node.parentNode.removeChild(node)
-  }
-}
-
-const unMountComponent = component => {
-  if (component.componentWillUnmount) component.componentWillUnmount() // 执行删除组件生命周期函数
-  removeNode(component.base)
-}
-
-const isSameNodeType = (dom, vnode) => { // 是不是一样的节点
-  if (typeof vnode === 'string' || typeof vnode === 'number') {
-    return dom.nodeType === 3
-  }
-
-  if (typeof vnode.tag === 'string') {
-    return dom.nodeName.toLowerCase() === vnode.tag.toLowerCase()
-  }
-
-  return dom && dom._component && dom._component.constructor === vnode.tag
-}
-
+import {
+  unMountComponent,
+  isSameNodeType,
+  removeNode
+} from './diffUtils.js'
 
 const diffComponent = (dom, vnode) => {
   let c = dom && dom._component || {}

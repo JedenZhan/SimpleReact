@@ -61,7 +61,7 @@ export const setComponentProps = (component, props) => {
 
 export const renderComponent = component => {
   let base
-  const renderer = component.render() // 这里执行返回内部的虚拟或者真实 DOM
+  const renderer = component.render() // 这里执行返回内部的自定义组件或者vDOM
   if (component.base && component.componentWillUpdate) {
     console.log('组件需要更新')
     component.componentWillUpdate()
@@ -75,11 +75,6 @@ export const renderComponent = component => {
 }
 
 const _render = vnode => {
-  if (typeof vnode.tag === 'function') {
-    const component = createComponent(vnode.tag, vnode.attrs)
-    setComponentProps(component, vnode.attrs)
-    return component.base
-  }
   if (!vnode || typeof vnode === 'boolean') vnode = ''
   if (typeof vnode === 'number') vnode = String(vnode)
   if (typeof vnode === 'string') {

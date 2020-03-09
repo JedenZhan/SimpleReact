@@ -1,4 +1,5 @@
-import render, { renderComponent } from '../react-dom/render.js'
+import render from '../react-dom/render.js'
+import setStateQueue from './setStateQueue.js'
 
 export class Component {
     constructor(props = {}) {
@@ -8,10 +9,8 @@ export class Component {
         this.props = props;
     }
 
-    setState(stateChange) {
-        Object.assign(this.state, stateChange)
-        console.log(stateChange)
-        renderComponent(this)
+    setState(newState) {
+        setStateQueue(newState, this)
     }
 }
 
