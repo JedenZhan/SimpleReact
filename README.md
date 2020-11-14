@@ -20,5 +20,3 @@ cd SimpleReact
 ```bash
 cnpm i live-server -g
 ```
-
-[博客地址](https://jedenzhan.github.io/)
